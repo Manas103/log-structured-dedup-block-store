@@ -1,0 +1,38 @@
+churn: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=sync, iodepth=1
+fio-3.28
+Starting 1 process
+fio: io_u error on file /dev/nbd6: Input/output error: write offset=161366016, buflen=4096
+fio: pid=35560, err=5/file:io_u.c:1845, func=io_u error, error=Input/output error
+
+churn: (groupid=0, jobs=1): err= 5 (file:io_u.c:1845, func=io_u error, error=Input/output error): pid=35560: Sun Oct 25 05:09:01 2026
+  read: IOPS=4, BW=16.8KiB/s (17.2kB/s)(7644KiB/456030msec)
+    clat (usec): min=115, max=1686, avg=145.41, stdev=40.56
+     lat (usec): min=115, max=1687, avg=145.56, stdev=40.58
+    clat percentiles (usec):
+     | 50.00th=[  139], 95.00th=[  182], 99.00th=[  208], 99.90th=[  545],
+     | 99.99th=[ 1680]
+   bw (  KiB/s): min=    8, max= 1560, per=100.00%, avg=34.20, stdev=99.76, samples=447
+   iops        : min=    2, max=  390, avg= 8.55, stdev=24.94, samples=447
+  write: IOPS=16, BW=66.8KiB/s (68.5kB/s)(29.8MiB/456030msec); 0 zone resets
+    clat (usec): min=412, max=179317, avg=34674.36, stdev=50347.98
+     lat (usec): min=412, max=179318, avg=34674.52, stdev=50347.98
+    clat percentiles (usec):
+     | 50.00th=[   594], 95.00th=[111674], 99.00th=[119014], 99.90th=[152044],
+     | 99.99th=[179307]
+   bw (  KiB/s): min=   32, max= 6568, per=100.00%, avg=115.25, stdev=392.76, samples=529
+   iops        : min=    8, max= 1642, avg=28.81, stdev=98.19, samples=529
+  lat (usec)   : 250=20.01%, 500=0.57%, 750=53.95%, 1000=0.18%
+  lat (msec)   : 2=0.05%, 4=0.01%, 100=0.35%, 250=24.87%
+  cpu          : usr=0.01%, sys=0.03%, ctx=9533, majf=0, minf=22
+  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwts: total=1911,7622,0,0 short=0,0,0,0 dropped=0,0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=1
+
+Run status group 0 (all jobs):
+   READ: bw=16.8KiB/s (17.2kB/s), 16.8KiB/s-16.8KiB/s (17.2kB/s-17.2kB/s), io=7644KiB (7827kB), run=456030-456030msec
+  WRITE: bw=66.8KiB/s (68.5kB/s), 66.8KiB/s-66.8KiB/s (68.5kB/s-68.5kB/s), io=29.8MiB (31.2MB), run=456030-456030msec
+
+Disk stats (read/write):
+  nbd6: ios=1911/7621, merge=0/0, ticks=245/264109, in_queue=264353, util=99.97%

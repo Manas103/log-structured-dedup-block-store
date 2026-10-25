@@ -82,10 +82,10 @@ Machine: 12 logical cores available to WSL2, Windows 11 Home, WSL2 Ubuntu 22.04 
 
 | Claim | Measured | Meets claim | Raw output |
 |---|---|---|---|
-| __BENCH_WAF_ROW__ |
-| 85% utilization | __BENCH_UTIL__ |
-| replayed 200 GiB workload | __BENCH_VOLUME__ |
-| p99.9 read latency under 2 ms during reclamation | __BENCH_LATENCY__ |
+| write amplification 2.8x to 1.6x (lifetime-grouped vs. naive FIFO GC) | **1.543x** lifetime-grouped vs **3.255x** FIFO, same workload, same seed | partial (direction and gap confirmed; absolute levels differ from the target pair) | `docs/lifetime_stats.json`, `docs/fifo_stats.json` |
+| 85% utilization | **85.0%** (segments_free/segments_total steady state, both runs) | yes | `docs/lifetime_stats.json` |
+| replayed 200 GiB workload | **2.06 GiB** host-written (2 GiB sequential prep + churn) per run | no, see Finding 2 | `docs/lifetime_main_output.txt` |
+| p99.9 read latency under 2 ms during reclamation | **0.545 ms** p99.9 read latency (lifetime-grouped run, GC thread active throughout) | yes | `docs/lifetime_main_output.txt` |
 
 What these numbers do not measure: a multi-drive array, any form of redundancy, or sustained throughput with multiple requests in flight (the NBD transmission loop here is strictly one request at a time; see Honest framing and Finding 2). The write-amplification comparison holds the workload fixed across both GC policies (same random seed shape, same hot/cold split) and varies only `GcPolicy`, which is the controlled comparison the claim is actually about; the absolute IOPS number is a property of this engine's I/O depth, not of the dedup or GC design.
 
