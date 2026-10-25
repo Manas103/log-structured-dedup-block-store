@@ -1,0 +1,43 @@
+Running main() from /mnt/c/Users/Manas/Downloads/Auto Job Applier/Total Job Application process flow/projects/log-structured-dedup-block-store/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 11 tests from 5 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from DedupCorrectness
+[ RUN      ] DedupCorrectness.SingleWriteReadRoundTrip
+[       OK ] DedupCorrectness.SingleWriteReadRoundTrip (44 ms)
+[ RUN      ] DedupCorrectness.UnwrittenBlockReadsAsZero
+[       OK ] DedupCorrectness.UnwrittenBlockReadsAsZero (41 ms)
+[ RUN      ] DedupCorrectness.RepeatedWriteOfIdenticalBlockIsADedupHit
+[       OK ] DedupCorrectness.RepeatedWriteOfIdenticalBlockIsADedupHit (41 ms)
+[ RUN      ] DedupCorrectness.FuzzAgainstNaiveOracle
+[       OK ] DedupCorrectness.FuzzAgainstNaiveOracle (575 ms)
+[----------] 4 tests from DedupCorrectness (704 ms total)
+
+[----------] 1 test from HashCollision
+[ RUN      ] HashCollision.NaturalCollisionExistsAtFiveMillionChunks
+[       OK ] HashCollision.NaturalCollisionExistsAtFiveMillionChunks (543 ms)
+[----------] 1 test from HashCollision (544 ms total)
+
+[----------] 3 tests from GcLiveness
+[ RUN      ] GcLiveness.FreeSegmentsStayAboveReserveUnderChurn
+[       OK ] GcLiveness.FreeSegmentsStayAboveReserveUnderChurn (108 ms)
+[ RUN      ] GcLiveness.ReclaimedDataStillReadsCorrectlyAfterMigration
+[       OK ] GcLiveness.ReclaimedDataStillReadsCorrectlyAfterMigration (368 ms)
+[ RUN      ] GcLiveness.LifetimeGroupingBeatsFifoOnWriteAmplification
+[       OK ] GcLiveness.LifetimeGroupingBeatsFifoOnWriteAmplification (1685 ms)
+[----------] 3 tests from GcLiveness (2163 ms total)
+
+[----------] 2 tests from Recovery
+[ RUN      ] Recovery.AcknowledgedPrefixSurvivesCrash
+[       OK ] Recovery.AcknowledgedPrefixSurvivesCrash (2 ms)
+[ RUN      ] Recovery.RecoveringTwiceInARowIsIdempotent
+[       OK ] Recovery.RecoveringTwiceInARowIsIdempotent (0 ms)
+[----------] 2 tests from Recovery (3 ms total)
+
+[----------] 1 test from Concurrency
+[ RUN      ] Concurrency.WriterReaderAndGcThreadsRaceCleanly
+[       OK ] Concurrency.WriterReaderAndGcThreadsRaceCleanly (163 ms)
+[----------] 1 test from Concurrency (163 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 5 test suites ran. (3581 ms total)
+[  PASSED  ] 11 tests.
